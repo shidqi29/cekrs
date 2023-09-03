@@ -1,9 +1,10 @@
 import PageContainer from "../components/PageContainer";
+import Search from "../components/Search";
 
 const Home = () => {
   return (
     <PageContainer title={"Cek Ketersediaan Tempat Tidur Rumah Sakit"}>
-      <h1>tes</h1>
+      <Search />
     </PageContainer>
   );
 };
