@@ -1,7 +1,13 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 function App() {
   return (
-    <div className="h-[100vh] bg-slate-500 p-2 text-white">
-      <h1 className="text-3xl">Cek Ketersediaan Kamar Tidur Rumah Sakit</h1>
+    <div className="container mx-auto">
+      <Router>
+        <Routes>
+          <Route index element={<Home />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
