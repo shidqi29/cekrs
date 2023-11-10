@@ -1,14 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+
+import { Wrapper } from "@components/layouts";
+import { Home } from "@pages";
+
 function App() {
   return (
-    <div className="container mx-auto">
-      <Router>
-        <Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Wrapper />}>
           <Route index element={<Home />} />
-        </Routes>
-      </Router>
-    </div>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
