@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useFetchData } from "@hooks/useFetchData";
 import { axiosInstance } from "@lib/axios";
@@ -8,6 +9,7 @@ export const InputForm = () => {
   const [city, setCity] = useState("");
   const [cities, setCities] = useState(null);
   const [isCitiesLoading, setIsCitiesLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { data: provinces, isLoading: isProvinceLoading } =
     useFetchData("/get-provinces");
@@ -25,6 +27,17 @@ export const InputForm = () => {
       fetchCities();
     }
   }, [province]);
+
+  const handleSubmit = () => {
+    if (province && city) {
+      navigate(`/rumah-sakit`, {
+        state: {
+          province,
+          city,
+        },
+      });
+    }
+  };
 
   return (
     <>
@@ -73,7 +86,11 @@ export const InputForm = () => {
             </select>
           </div>
         </div>
-        <button className="btn btn-outline w-full" disabled={!cities}>
+        <button
+          onClick={handleSubmit}
+          className="btn btn-outline w-full"
+          disabled={!province || !city}
+        >
           Cari
         </button>
       </div>
