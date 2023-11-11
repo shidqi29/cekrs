@@ -1,7 +1,12 @@
+import { InputForm } from "@components/fragments";
+import { Content } from "@components/layouts";
+
 export const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Content title="Cek Ketersediaan Tempat Tidur Rumah Sakit Indonesia">
+        <InputForm />
+      </Content>
+    </>
   );
 };
