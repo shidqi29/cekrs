@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Wrapper } from "@components/layouts";
-import { Home } from "@pages";
+import { Home, Hospitals } from "@pages";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Wrapper />}>
           <Route index element={<Home />} />
+          <Route path="/rumah-sakit" element={<Hospitals />} />
         </Route>
       </Routes>
     </Router>

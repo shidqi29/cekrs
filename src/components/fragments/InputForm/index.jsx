@@ -9,6 +9,9 @@ export const InputForm = () => {
   const [city, setCity] = useState("");
   const [cities, setCities] = useState(null);
   const [isCitiesLoading, setIsCitiesLoading] = useState(false);
+  const [provinceName, setProvinceName] = useState("");
+  const [cityName, setCityName] = useState("");
+
   const navigate = useNavigate();
 
   const { data: provinces, isLoading: isProvinceLoading } =
@@ -28,12 +31,24 @@ export const InputForm = () => {
     }
   }, [province]);
 
+  const handleProvinceChange = (e) => {
+    setProvince(e.target.value);
+    setProvinceName(e.target.options[e.target.selectedIndex].text);
+  };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+    setCityName(e.target.options[e.target.selectedIndex].text);
+  };
+
   const handleSubmit = () => {
     if (province && city) {
       navigate(`/rumah-sakit`, {
         state: {
           province,
           city,
+          provinceName,
+          cityName,
         },
       });
     }
@@ -50,7 +65,7 @@ export const InputForm = () => {
             <select
               className="select select-bordered"
               value={province}
-              onChange={(e) => setProvince(e.target.value)}
+              onChange={handleProvinceChange}
               disabled={!provinces}
             >
               <option value="" defaultValue={""} disabled hidden>
@@ -72,7 +87,7 @@ export const InputForm = () => {
             <select
               className="select select-bordered"
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              onChange={handleCityChange}
               disabled={!cities || isCitiesLoading}
             >
               <option value="" defaultValue={""} disabled hidden>
