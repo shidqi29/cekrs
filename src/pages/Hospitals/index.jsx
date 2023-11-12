@@ -17,11 +17,16 @@ export const Hospitals = () => {
     <>
       <Content title="Daftar Rumah Sakit">
         <div className="my-4">
-          <span className="flex items-center gap-x-2 font-semibold">
-            <MapPin size={26} weight="fill" /> {cityName}, {provinceName}
-          </span>
+          <div className="flex items-center gap-x-2 font-semibold">
+            <span>
+              <MapPin size={26} weight="fill" />
+            </span>
+            <span>
+              {cityName}, {provinceName}
+            </span>
+          </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-y-8">
+        <div className="flex flex-wrap justify-center gap-y-8">
           {data?.hospitals?.map((item) => (
             <HospitalCard key={item.id} data={item} />
           ))}
