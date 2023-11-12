@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Bed, CheckCircle, HourglassMedium } from "@phosphor-icons/react";
+
 import { formattedDate } from "@utils";
 
 export const BedDetailCard = ({ data }) => {
@@ -24,7 +25,7 @@ export const BedDetailCard = ({ data }) => {
                 <CheckCircle size={24} weight="fill" />
               </div>
               <p>
-                <span>{stats.bed_empty}</span> Kosong
+                <span>{stats.bed_empty}</span> Tersedia
               </p>
             </div>
             <div className="flex items-center gap-x-2">
@@ -36,7 +37,7 @@ export const BedDetailCard = ({ data }) => {
               </p>
             </div>
           </div>
-          <p className="capitalize text-xs">
+          <p className="text-xs capitalize">
             Terakhir Diperbarui: {formattedDate(time)} WIB
           </p>
         </div>

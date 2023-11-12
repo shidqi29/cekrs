@@ -3,18 +3,20 @@ import { useParams } from "react-router-dom";
 
 import { BedDetailCard } from "@components/fragments";
 import { Content } from "@components/layouts";
-import { useFetchData } from "@hooks/useFetchData";
+import { useFetchData } from "@hooks";
+import { Loading } from "@components/elements";
 
 export const DetailHospital = () => {
   const { id } = useParams();
 
-  const { data: detailHospital } = useFetchData(
-    `/get-bed-detail?hospitalid=${id}&type=2`,
-  );
+  const { data: detailHospital, isLoading: isDetailHospitalLoading } =
+    useFetchData(`/get-bed-detail?hospitalid=${id}&type=2`);
 
-  const { data: hospitalMap } = useFetchData(
+  const { data: hospitalMap, isLoading: isHospitalMapLoading } = useFetchData(
     `/get-hospital-map?hospitalid=${id}`,
   );
+
+  if (isDetailHospitalLoading || isHospitalMapLoading) return <Loading />;
 
   return (
     <>

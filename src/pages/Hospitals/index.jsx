@@ -3,15 +3,18 @@ import { MapPin } from "@phosphor-icons/react";
 
 import { HospitalCard } from "@components/fragments";
 import { Content } from "@components/layouts";
-import { useFetchData } from "@hooks/useFetchData";
+import { useFetchData } from "@hooks";
+import { Loading, NoData } from "@components/elements";
 
 export const Hospitals = () => {
   const location = useLocation();
   const { province, city, provinceName, cityName } = location.state;
 
-  const { data } = useFetchData(
+  const { data, isLoading } = useFetchData(
     `/get-hospitals?provinceid=${province}&cityid=${city}&type=2`,
   );
+
+  if (isLoading) return <Loading />;
 
   return (
     <>
@@ -27,9 +30,13 @@ export const Hospitals = () => {
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-y-8">
-          {data?.hospitals?.map((item) => (
-            <HospitalCard key={item.id} data={item} />
-          ))}
+          {data?.hospitals?.length === 0 ? (
+            <NoData />
+          ) : (
+            data?.hospitals?.map((item) => (
+              <HospitalCard key={item.id} data={item} />
+            ))
+          )}
         </div>
       </Content>
     </>

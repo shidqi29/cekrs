@@ -1,7 +1,10 @@
-import { axiosInstance } from "@lib/axios";
 import { useQuery } from "react-query";
 
+import { axiosInstance } from "@lib";
+
 export const useFetchData = (endpoint) => {
+  const FIVE_MINUTES = 1000 * 60 * 5;
+
   return useQuery({
     queryKey: [endpoint],
     queryFn: async () => {
@@ -9,6 +12,6 @@ export const useFetchData = (endpoint) => {
       return data;
     },
     keepPreviousData: true,
-    staleTime: Infinity,
+    staleTime: FIVE_MINUTES,
   });
 };
