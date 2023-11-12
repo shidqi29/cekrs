@@ -17,7 +17,7 @@ export const Hospitals = () => {
     <>
       <Content title="Daftar Rumah Sakit">
         <div className="my-4">
-          <span className="flex items-center font-semibold gap-x-2">
+          <span className="flex items-center gap-x-2 font-semibold">
             <MapPin size={26} weight="fill" /> {cityName}, {provinceName}
           </span>
         </div>

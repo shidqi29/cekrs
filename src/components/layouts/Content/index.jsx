@@ -14,7 +14,7 @@ export const Content = ({ title, children }) => {
       <section>
         <div className="flex items-center justify-start md:gap-2">
           <button onClick={handleBack} className="btn btn-circle btn-ghost">
-            <ArrowLeft size={28} />
+            <ArrowLeft size={28} weight="bold" />
           </button>
           <h1 className="text-3xl font-black md:text-5xl">{title}</h1>
         </div>
