@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import { Bed, CheckCircle, HourglassMedium } from "@phosphor-icons/react";
 
-import { formattedDate } from "@utils";
-
 export const BedDetailCard = ({ data }) => {
   const { stats, time } = data;
 
@@ -37,9 +35,7 @@ export const BedDetailCard = ({ data }) => {
               </p>
             </div>
           </div>
-          <p className="text-xs capitalize">
-            Terakhir Diperbarui: {formattedDate(time)} WIB
-          </p>
+          <p className="text-xs capitalize">Terakhir Diperbarui: {time}</p>
         </div>
       </div>
     </>
