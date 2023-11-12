@@ -21,7 +21,7 @@ export const HospitalCard = ({ data }) => {
                   Penuh
                 </div>
               )}
-              <p className="text-sm">{item.info}</p>
+              <p className="text-xs">{item.info}</p>
             </div>
           ))}
         </Link>
