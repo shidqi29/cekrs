@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useFetchData } from "@hooks/useFetchData";
-import { axiosInstance } from "@lib/axios";
+import { useFetchData } from "@hooks";
+import { axiosInstance } from "@lib";
+import { Loading } from "@components/elements";
 
 export const InputForm = () => {
   const [province, setProvince] = useState("");
   const [city, setCity] = useState("");
+
   const [cities, setCities] = useState(null);
   const [isCitiesLoading, setIsCitiesLoading] = useState(false);
+
   const [provinceName, setProvinceName] = useState("");
   const [cityName, setCityName] = useState("");
 
@@ -54,15 +57,18 @@ export const InputForm = () => {
     }
   };
 
+  if (isProvinceLoading) return <Loading />;
+
   return (
     <>
       <div className="flex w-full flex-col gap-y-10">
         <div className="flex w-full flex-col justify-around md:flex-row">
           <div className="form-control w-full md:max-w-xs">
-            <label className="label">
+            <label className="label" htmlFor="province">
               <span className="label-text text-xl font-semibold">Provinsi</span>
             </label>
             <select
+              id="province"
               className="select select-bordered"
               value={province}
               onChange={handleProvinceChange}
@@ -79,12 +85,13 @@ export const InputForm = () => {
             </select>
           </div>
           <div className="form-control w-full md:max-w-xs">
-            <label className="label">
+            <label className="label" htmlFor="city">
               <span className="label-text text-xl font-semibold">
                 Kabupaten/Kota
               </span>
             </label>
             <select
+              id="city"
               className="select select-bordered"
               value={city}
               onChange={handleCityChange}
